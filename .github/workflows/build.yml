@@ -30,18 +30,7 @@ jobs:
         yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
         $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3"
 
-    - name: Set environment variables
-      run: |
-        echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
-        echo "PATH=$HOME/android-sdk/platform-tools:$HOME/android-sdk/emulator:$HOME/android-sdk/cmdline-tools/latest/bin:$PATH" >> $GITHUB_ENV
-
     - name: Build APK
       run: |
-        export ANDROIDAPI=30
-        export ANDROIDMINAPI=21
-        export ANDROIDSDK=$HOME/android-sdk
-        export ANDROIDNDK=$HOME/.buildozer/android/platform/android-ndk-r25b
-        export ANDROIDNDKVER=r25b
-        export PATH=$ANDROIDSDK/build-tools/30.0.3:$PATH
         buildozer init
         buildozer -v android debug
