@@ -37,5 +37,11 @@ jobs:
 
     - name: Build APK
       run: |
+        export ANDROIDAPI=30
+        export ANDROIDMINAPI=21
+        export ANDROIDSDK=$HOME/android-sdk
+        export ANDROIDNDK=$HOME/.buildozer/android/platform/android-ndk-r25b
+        export ANDROIDNDKVER=r25b
+        export PATH=$ANDROIDSDK/build-tools/30.0.3:$PATH
         buildozer init
         buildozer -v android debug
